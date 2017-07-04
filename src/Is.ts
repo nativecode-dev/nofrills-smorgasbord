@@ -1,7 +1,14 @@
-export const Is: any = {
+export type IsType = (value: any) => boolean
+
+export const Is: { [key: string]: any } = {
   array: (value: any): boolean => {
     return (value instanceof Array)
       && Is.string(value) === false
+  },
+  arrayOf: (value: any[], type: string): boolean => {
+    return Is.array(value) && value
+      .map((element: any) => Is[type](element))
+      .reduce((previous: boolean, current: boolean): boolean => previous && current, true)
   },
   boolean: (value: any): boolean => {
     return (typeof value === 'boolean')
