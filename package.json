@@ -6,13 +6,14 @@
   "main": "./lib/index.js",
   "name": "@nofrills/smorgasbord",
   "types": "./lib/index.d.ts",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "bugs": {
     "url": "https://github.com/nativecode-dev/nofrills-smorgasbord/issues"
   },
   "dependencies": {
-    "@nofrills/collections": "^0.7.3",
-    "@nofrills/lincoln": "^0.6.2"
+    "@nofrills/collections": "^0.8.0",
+    "@nofrills/lincoln": "^0.7.0",
+    "@nofrills/types": "^0.7.0"
   },
   "devDependencies": {
     "@types/chai": "^4.0.1",
@@ -35,7 +36,7 @@
     "prebuild": "rimraf lib/",
     "postbuild": "npm run lint",
     "lint": "tslint src/",
-    "test": "cross-env DEBUG=nativecode:* nyc mocha tests/",
+    "test": "cross-env DEBUG= nyc mocha tests/",
     "pretest": "npm run build",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "push": "npm publish --access public",
